@@ -6,6 +6,7 @@ Gem::Specification.new do |s|
   s.description = "autopilothq.com api client"
   s.authors = ["Justin Culbertson"]
   s.email = 'justin@repairtechsolutions.com'
+  s.homepage = 'https://github.com/jjculber/autopilothq-ruby'
   s.files = ["lib/autopilothq.rb"]
   s.license = 'MIT'
   s.add_dependency 'rest-client'

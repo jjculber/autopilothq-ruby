@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'autopilothq'
-  s.version = '0.0.3'
+  s.version = '0.0.4'
   s.date = '2015-10-08'
   s.summary = "autopilothq.com api client"
   s.description = "autopilothq.com api client"

@@ -15,11 +15,12 @@ class Autopilothq
           "custom" => {}
         }
       }
-      custom_attrs.each_pair{ |key, value|
-        if key.class.to_s == "Date"
+      custom_attrs.each_pair{ |key, (type,value)|
+        next if value.nil?
+        if type == "date"
           value = value.to_i
         end
-        attributes['contact']['custom'][get_key_name(key, value)] = value
+        attributes['contact']['custom'][get_key_name(key, type)] = value
       }
 
       response = RestClient.post 'https://api2.autopilothq.com/v1/contact', attributes.to_json, headers
@@ -36,13 +37,7 @@ class Autopilothq
     }
   end
 
-  def self.get_key_name(name, value)
-    type = {"Float" => "float",
-            "Fixnum" => "integer",
-            "String" => "string",
-            "TrueClass" => "boolean",
-            "FalseClass" => "boolean",
-            "Date" => "date"}
-    return "#{type[value.class.to_s]}--#{name.gsub(/\s+/, "--")}"
+  def self.get_key_name(name, type)
+    return "#{type}--#{name.gsub(/\s+/, "--")}"
   end
 end

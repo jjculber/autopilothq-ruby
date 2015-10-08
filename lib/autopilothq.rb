@@ -16,6 +16,9 @@ class Autopilothq
         }
       }
       custom_attrs.each_pair{ |key, value|
+        if key.class.to_s == "Date"
+          value = value.to_i
+        end
         attributes['contact']['custom'][get_key_name(key, value)] = value
       }
 

@@ -18,7 +18,7 @@ class Autopilothq
       custom_attrs.each_pair{ |key, (type,value)|
         next if value.nil?
         if type == "date"
-          value = value.to_i
+          value = value.to_i * 1000
         end
         attributes['contact']['custom'][get_key_name(key, type)] = value
       }
